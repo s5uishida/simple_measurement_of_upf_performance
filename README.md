@@ -718,7 +718,7 @@ net.ipv4.ip_forward=1
 ```
 # sysctl -p
 ```
-Next, configure NAPT and routing to N6 IP address of VPP-UPF.
+Next, configure NAPT and routing to N6 IP address of UPF.
 ```
 # iptables -t nat -A POSTROUTING -s 10.45.0.0/16 -j MASQUERADE
 # ip route add 10.45.0.0/16 via 192.168.16.151 dev enp0s9
