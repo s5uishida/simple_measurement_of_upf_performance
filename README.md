@@ -116,7 +116,7 @@ The network interfaces of each VM except VM-UP are as follows.
 | | | enp0s9 | NAT Network | vertio-net | 192.168.13.151/24 | N3 |
 | | | enp0s10 | NAT Network | vertio-net | 192.168.14.151/24 | N4 |
 | | | enp0s16 | NAT Network | vertio-net | 192.168.16.151/24 | N6 |
-| b | UPG-VPP | ~~enp0s3~~ | ~~NAT(default)~~ | ~~82540EM~~ | ~~10.0.2.15/24~~ | ~~(VM default NW)~~<br>***down*** |
+| b | UPG-VPP | enp0s3 | NAT(default) | 82540EM | 10.0.2.15/24 | (VM default NW)<br> |
 | | | enp0s8 | Bridged Adapter | 82540EM | 192.168.0.151/24 | (Mgmt NW) |
 | | | enp0s9 | NAT Network | 82540EM | 192.168.13.151/24 | N3<br>***(Under DPDK<br>by vfio-pci)*** |
 | | | enp0s10 | NAT Network | 82540EM | 192.168.14.151/24 | N4<br>***(Under DPDK<br>by vfio-pci)*** |
