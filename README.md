@@ -632,7 +632,7 @@ net.ipv4.ip_forward=1
 ```
 # sysctl -p
 ```
-Next, down the default interface`enp0s3` of the VM-UP and set the VM-DN IP address to default GW on the N6 interface`enp0s16`.
+Next, down the default interface `enp0s3` of the VM-UP and set the VM-DN IP address to default GW on the N6 interface`enp0s16`.
 ```
 # ip link set dev enp0s3 down
 # ip route add default via 192.168.16.152 dev enp0s16
@@ -655,7 +655,7 @@ net.ipv4.ip_forward=1
 ```
 # sysctl -p
 ```
-Next, down the default interface`enp0s3` of the VM-UP and set the VM-DN IP address to default GW on the N6 interface`enp0s16`.
+Next, down the default interface `enp0s3` of the VM-UP and set the VM-DN IP address to default GW on the N6 interface`enp0s16`.
 ```
 # ip link set dev enp0s3 down
 # ip route add default via 192.168.16.152 dev enp0s16
@@ -684,7 +684,7 @@ net.ipv4.ip_forward=1
 ```
 # sysctl -p
 ```
-Next, down the default interface`enp0s3` of the VM-UP and set the VM-DN IP address to default GW on the N6 interface`enp0s16`.
+Next, down the default interface `enp0s3` of the VM-UP and set the VM-DN IP address to default GW on the N6 interface`enp0s16`.
 ```
 # ip link set dev enp0s3 down
 # ip route add default via 192.168.16.152 dev enp0s16
@@ -701,7 +701,7 @@ net.ipv4.ip_forward=1
 ```
 # sysctl -p
 ```
-Next, down the default interface`enp0s3` of the VM-UP and set the VM-DN IP address to default GW on the N6 interface`enp0s16`.
+Next, down the default interface `enp0s3` of the VM-UP and set the VM-DN IP address to default GW on the N6 interface`enp0s16`.
 ```
 # ip link set dev enp0s3 down
 # ip route add default via 192.168.16.152 dev enp0s16
