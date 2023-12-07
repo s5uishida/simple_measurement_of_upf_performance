@@ -1024,7 +1024,7 @@ These measurements are the values measured between the IP address `10.45.0.0/16`
 | Open5GS UPF v2.7.0 (TUN) | 2023.12.04 | S:205 Mbps<br>R:204 Mbps | S:458 Mbps<br>R:319 Mbps | 30% | 1.081 (msec) |
 | Open5GS UPF v2.7.0 (TAP) | 2023.12.04 | S:275 Mbps<br>R:273 Mbps | S:465 Mbps<br>R:314 Mbps | 32% | 1.198 (msec) |
 | UPG-VPP v1.11.0-rc.2 | 2023.11.30 | S:1.14 Gbps<br>R:1.13 Gbps | S:461 Mbps<br>R:455 Mbps | 0.96% | 0.398 (msec) |
-| **4) eUPF v0.6.0** | 2023.12.06 | S:359 Mbps<br>R:356 Mbps | S:426 Mbps<br>R:409 Mbps | 3.6% | 0.882 (msec) |
+| **4) eUPF v0.6.0** | 2023.12.05 | S:359 Mbps<br>R:356 Mbps | S:426 Mbps<br>R:409 Mbps | 3.6% | 0.882 (msec) |
 | free5GC UPF v3.3.0 | 2023.11.12 | S:233 Mbps<br>R:229 Mbps | S:499 Mbps<br>R:382 Mbps | 23% | 0.786 (msec) |
 
 1. `iperf3 -c 192.168.16.152`  
