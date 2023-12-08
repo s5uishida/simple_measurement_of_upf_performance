@@ -1019,20 +1019,20 @@ iperf Done.
 
 These measurements are the values measured between the IP address `10.45.0.0/16` assigned by PacketRusher on VM2 and the IP address `192.168.16.152` of the Data Network Gateway N6 interface on VM-DN.
 
-| UPF | Date | 1) TCP<br>throughput | 2) UDP<br>throughput | 2) UDP<br>packet loss | 3) RTT | 
-| --- | --- | --- | --- | --- | --- |
-| Open5GS UPF v2.7.0 (TUN) | 2023.12.04 | S:205 Mbps<br>R:204 Mbps | S:458 Mbps<br>R:319 Mbps | 30% | 1.081 (msec) |
-| Open5GS UPF v2.7.0 (TAP) | 2023.12.04 | S:275 Mbps<br>R:273 Mbps | S:465 Mbps<br>R:314 Mbps | 32% | 1.198 (msec) |
-| UPG-VPP v1.11.0-rc.2 | 2023.11.30 | S:1.14 Gbps<br>R:1.13 Gbps | S:461 Mbps<br>R:455 Mbps | 0.96% | 0.398 (msec) |
-| **4) eUPF v0.6.0** | 2023.12.05 | S:359 Mbps<br>R:356 Mbps | S:426 Mbps<br>R:409 Mbps | 3.6% | 0.882 (msec) |
-| free5GC UPF v3.3.0 | 2023.11.12 | S:233 Mbps<br>R:229 Mbps | S:499 Mbps<br>R:382 Mbps | 23% | 0.786 (msec) |
+| # | UPF | Date | 1) TCP<br>throughput | 2) UDP<br>throughput | 2) UDP<br>packet loss | 3) RTT<br>(msec) | 
+| --- | --- | --- | --- | --- | --- | --- |
+| a-1 | Open5GS UPF v2.7.0 (TUN) | 2023.12.04 | S:205 Mbps<br>R:204 Mbps | S:458 Mbps<br>R:319 Mbps | 30% | 1.081 |
+| a-2 | Open5GS UPF v2.7.0 (TAP) | 2023.12.04 | S:275 Mbps<br>R:273 Mbps | S:465 Mbps<br>R:314 Mbps | 32% | 1.198 |
+| b | UPG-VPP v1.11.0-rc.2 | 2023.11.30 | S:1.14 Gbps<br>R:1.13 Gbps | S:461 Mbps<br>R:455 Mbps | 0.96% | 0.398 |
+| c | **4) eUPF v0.6.0** | 2023.12.05 | S:359 Mbps<br>R:356 Mbps | S:426 Mbps<br>R:409 Mbps | 3.6% | 0.882 |
+| d | free5GC UPF v3.3.0 | 2023.11.12 | S:233 Mbps<br>R:229 Mbps | S:499 Mbps<br>R:382 Mbps | 23% | 0.786 |
 
 1. `iperf3 -c 192.168.16.152`  
 2. `iperf3 -c 192.168.16.152 -u -b 500M`  
 3. `ping 192.168.16.152 -c 10`
 4. These are the measured values when `xdp_attach_mode` is set to `generic` due to Virtualbox VM. Note that `generic` mode is implemented at the kernel level, so it does not contribute to performance improvement. If it is set to `native`(Driver-level implementation) or `offload`(NIC-level implementation), it may be expected to more improved performance. For reference, a list of drivers that support XDP can be found [here](https://github.com/iovisor/bcc/blob/master/docs/kernel-versions.md#xdp).
 
-<details><summary>Ping and iPerf3 logs for Open5GS UPF v2.7.0 (TUN)</summary>
+<details><summary>a-1. Ping and iPerf3 logs for Open5GS UPF v2.7.0 (TUN)</summary>
 
 ```
 # iperf3 -c 192.168.16.152
@@ -1099,7 +1099,7 @@ rtt min/avg/max/mdev = 0.879/1.081/1.252/0.116 ms
 
 </details>
 
-<details><summary>Ping and iPerf3 logs for Open5GS UPF v2.7.0 (TAP)</summary>
+<details><summary>a-2. Ping and iPerf3 logs for Open5GS UPF v2.7.0 (TAP)</summary>
 
 ```
 # iperf3 -c 192.168.16.152
@@ -1166,7 +1166,7 @@ rtt min/avg/max/mdev = 0.860/1.198/1.867/0.313 ms
 
 </details>
 
-<details><summary>Ping and iPerf3 logs for UPG-VPP v1.11.0-rc.2</summary>
+<details><summary>b. Ping and iPerf3 logs for UPG-VPP v1.11.0-rc.2</summary>
 
 ```
 # iperf3 -c 192.168.16.152
@@ -1233,7 +1233,7 @@ rtt min/avg/max/mdev = 0.290/0.398/0.692/0.119 ms
 
 </details>
 
-<details><summary>Ping and iPerf3 logs for eUPF v0.6.0</summary>
+<details><summary>c. Ping and iPerf3 logs for eUPF v0.6.0</summary>
 
 ```
 # iperf3 -c 192.168.16.152
@@ -1300,7 +1300,7 @@ rtt min/avg/max/mdev = 0.642/0.882/1.053/0.099 ms
 
 </details>
 
-<details><summary>Ping and iPerf3 logs for free5GC UPF v3.3.0</summary>
+<details><summary>d. Ping and iPerf3 logs for free5GC UPF v3.3.0</summary>
 
 ```
 # iperf3 -c 192.168.16.152
