@@ -1029,8 +1029,8 @@ These measurements are the values measured between the IP address `10.45.0.0/16`
 
 1. `iperf3 -c 192.168.16.152`  
 2. `iperf3 -c 192.168.16.152 -u -b 500M`<br>**UDP packet loss** is a value measured under deliberate load (500 Mbps) in order to compare performance limits.  
-4. `ping 192.168.16.152 -c 10`
-5. These are the measured values when `xdp_attach_mode` is set to `generic` due to Virtualbox VM. Note that `generic` mode is implemented at the kernel level, so it does not contribute to performance improvement. If it is set to `native`(Driver-level implementation) or `offload`(NIC-level implementation), it may be expected to more improved performance. For reference, a list of drivers that support XDP can be found [here](https://github.com/iovisor/bcc/blob/master/docs/kernel-versions.md#xdp).
+3. `ping 192.168.16.152 -c 10`
+4. These are the measured values when `xdp_attach_mode` is set to `generic` due to Virtualbox VM. Note that `generic` mode is implemented at the kernel level, so it does not contribute to performance improvement. If it is set to `native`(Driver-level implementation) or `offload`(NIC-level implementation), it may be expected to more improved performance. For reference, a list of drivers that support XDP can be found [here](https://github.com/iovisor/bcc/blob/master/docs/kernel-versions.md#xdp).
 
 <details><summary>a-1. Ping and iPerf3 logs for Open5GS UPF v2.7.0 (TUN)</summary>
 
