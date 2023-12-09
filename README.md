@@ -972,6 +972,8 @@ Then all the commands in the new shell will use the tunnel.
 ### Try ping and iPerf3 client on VM2
 
 Try ping and iperf3 client to the address(`192.168.16.152`) of N6 interface on Data Network Gateway.
+
+**e.g.) The UPF used in the measurement below is UPG-VPP v1.11.0-rc.2.**
 ```
 # ping 192.168.16.152 -c 10
 PING 192.168.16.152 (192.168.16.152) 56(84) bytes of data.
