@@ -1019,18 +1019,13 @@ iperf Done.
 
 These measurements are the values measured between the IP address `10.45.0.0/16` assigned by PacketRusher on VM2 and the IP address `192.168.16.152` of the Data Network Gateway N6 interface on VM-DN.
 
+**Connected to Open5GS C-Plane**
 | # | UPF | Date | 1) TCP<br>throughput | 2) UDP<br>throughput | 2) UDP<br>packet loss | 3) RTT<br>(msec) | 
 | --- | --- | --- | --- | --- | --- | --- |
 | a-1 | Open5GS UPF v2.7.0 (TUN) | 2023.12.04 | S:205 Mbps<br>R:204 Mbps | S:458 Mbps<br>R:319 Mbps | 30% | 1.081 |
 | a-2 | Open5GS UPF v2.7.0 (TAP) | 2023.12.04 | S:275 Mbps<br>R:273 Mbps | S:465 Mbps<br>R:314 Mbps | 32% | 1.198 |
 | b | UPG-VPP v1.11.0-rc.2 | 2023.11.30 | S:1.14 Gbps<br>R:1.13 Gbps | S:461 Mbps<br>R:455 Mbps | 0.96% | 0.398 |
 | c | **4) eUPF v0.6.0** | 2023.12.05 | S:359 Mbps<br>R:356 Mbps | S:426 Mbps<br>R:409 Mbps | 3.6% | 0.882 |
-| d | free5GC UPF v3.3.0 | 2023.11.12 | S:233 Mbps<br>R:229 Mbps | S:499 Mbps<br>R:382 Mbps | 23% | 0.786 |
-
-1. `iperf3 -c 192.168.16.152`  
-2. `iperf3 -c 192.168.16.152 -u -b 500M`<br>**UDP packet loss** is a value measured under deliberate load (500 Mbps) in order to compare performance limits.  
-3. `ping 192.168.16.152 -c 10`
-4. These are the measured values when `xdp_attach_mode` is set to `generic` due to Virtualbox VM. Note that `generic` mode is implemented at the kernel level, so it does not contribute to performance improvement. If it is set to `native`(Driver-level implementation) or `offload`(NIC-level implementation), it may be expected to more improved performance. For reference, a list of drivers that support XDP can be found [here](https://github.com/iovisor/bcc/blob/master/docs/kernel-versions.md#xdp).
 
 <details><summary>a-1. Ping and iPerf3 logs for Open5GS UPF v2.7.0 (TUN)</summary>
 
@@ -1300,6 +1295,147 @@ rtt min/avg/max/mdev = 0.642/0.882/1.053/0.099 ms
 
 </details>
 
+**Connected to free5GC C-Plane**
+| # | UPF | Date | 1) TCP<br>throughput | 2) UDP<br>throughput | 2) UDP<br>packet loss | 3) RTT<br>(msec) | 
+| --- | --- | --- | --- | --- | --- | --- |
+| b | UPG-VPP v1.11.0-rc.2 | 2023.11.30 | S:1.13 Gbps<br>R:1.13 Gbps | S:500 Mbps<br>R:492 Mbps | 1.3% | 0.366 |
+| c | **4) eUPF v0.6.0** | 2023.12.05 | S:355 Mbps<br>R:352 Mbps | S:500 Mbps<br>R:453 Mbps | 8.9% | 0.906 |
+| d | free5GC UPF v3.3.0 | 2023.11.12 | S:233 Mbps<br>R:229 Mbps | S:499 Mbps<br>R:382 Mbps | 23% | 0.786 |
+
+<details><summary>b. Ping and iPerf3 logs for UPG-VPP v1.11.0-rc.2</summary>
+
+```
+# iperf3 -c 192.168.16.152
+Connecting to host 192.168.16.152, port 5201
+[  5] local 10.45.0.1 port 33028 connected to 192.168.16.152 port 5201
+[ ID] Interval           Transfer     Bitrate         Retr  Cwnd
+[  5]   0.00-1.00   sec   131 MBytes  1.10 Gbits/sec  145    239 KBytes       
+[  5]   1.00-2.00   sec   136 MBytes  1.14 Gbits/sec   88    265 KBytes       
+[  5]   2.00-3.00   sec   131 MBytes  1.10 Gbits/sec    6    298 KBytes       
+[  5]   3.00-4.00   sec   130 MBytes  1.09 Gbits/sec   19    346 KBytes       
+[  5]   4.00-5.00   sec   144 MBytes  1.21 Gbits/sec   64    370 KBytes       
+[  5]   5.00-6.00   sec   133 MBytes  1.12 Gbits/sec   42    244 KBytes       
+[  5]   6.00-7.00   sec   132 MBytes  1.11 Gbits/sec   43    296 KBytes       
+[  5]   7.00-8.00   sec   138 MBytes  1.15 Gbits/sec   89    327 KBytes       
+[  5]   8.00-9.00   sec   139 MBytes  1.16 Gbits/sec   49    285 KBytes       
+[  5]   9.00-10.00  sec   136 MBytes  1.14 Gbits/sec   80    316 KBytes       
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-10.00  sec  1.32 GBytes  1.13 Gbits/sec  625             sender
+[  5]   0.00-10.04  sec  1.32 GBytes  1.13 Gbits/sec                  receiver
+
+iperf Done.
+```
+```
+# iperf3 -c 192.168.16.152 -u -b 500M
+Connecting to host 192.168.16.152, port 5201
+[  5] local 10.45.0.1 port 49554 connected to 192.168.16.152 port 5201
+[ ID] Interval           Transfer     Bitrate         Total Datagrams
+[  5]   0.00-1.00   sec  59.6 MBytes   500 Mbits/sec  44257  
+[  5]   1.00-2.00   sec  59.6 MBytes   500 Mbits/sec  44243  
+[  5]   2.00-3.00   sec  59.6 MBytes   500 Mbits/sec  44282  
+[  5]   3.00-4.00   sec  59.6 MBytes   500 Mbits/sec  44250  
+[  5]   4.00-5.00   sec  59.6 MBytes   500 Mbits/sec  44275  
+[  5]   5.00-6.00   sec  59.6 MBytes   500 Mbits/sec  44263  
+[  5]   6.00-7.00   sec  59.6 MBytes   500 Mbits/sec  44223  
+[  5]   7.00-8.00   sec  59.6 MBytes   500 Mbits/sec  44287  
+[  5]   8.00-9.00   sec  59.6 MBytes   500 Mbits/sec  44261  
+[  5]   9.00-10.00  sec  59.6 MBytes   500 Mbits/sec  44278  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[  5]   0.00-10.00  sec   596 MBytes   500 Mbits/sec  0.000 ms  0/442619 (0%)  sender
+[  5]   0.00-10.04  sec   589 MBytes   492 Mbits/sec  0.013 ms  5535/442619 (1.3%)  receiver
+
+iperf Done.
+```
+```
+# ping 192.168.16.152 -c 10
+PING 192.168.16.152 (192.168.16.152) 56(84) bytes of data.
+64 bytes from 192.168.16.152: icmp_seq=1 ttl=63 time=0.306 ms
+64 bytes from 192.168.16.152: icmp_seq=2 ttl=63 time=0.413 ms
+64 bytes from 192.168.16.152: icmp_seq=3 ttl=63 time=0.534 ms
+64 bytes from 192.168.16.152: icmp_seq=4 ttl=63 time=0.281 ms
+64 bytes from 192.168.16.152: icmp_seq=5 ttl=63 time=0.368 ms
+64 bytes from 192.168.16.152: icmp_seq=6 ttl=63 time=0.361 ms
+64 bytes from 192.168.16.152: icmp_seq=7 ttl=63 time=0.272 ms
+64 bytes from 192.168.16.152: icmp_seq=8 ttl=63 time=0.322 ms
+64 bytes from 192.168.16.152: icmp_seq=9 ttl=63 time=0.309 ms
+64 bytes from 192.168.16.152: icmp_seq=10 ttl=63 time=0.500 ms
+
+--- 192.168.16.152 ping statistics ---
+10 packets transmitted, 10 received, 0% packet loss, time 9233ms
+rtt min/avg/max/mdev = 0.272/0.366/0.534/0.085 ms
+```
+
+</details>
+
+<details><summary>c. Ping and iPerf3 logs for eUPF v0.6.0</summary>
+
+```
+# iperf3 -c 192.168.16.152
+Connecting to host 192.168.16.152, port 5201
+[  5] local 10.45.0.1 port 48326 connected to 192.168.16.152 port 5201
+[ ID] Interval           Transfer     Bitrate         Retr  Cwnd
+[  5]   0.00-1.00   sec  43.7 MBytes   366 Mbits/sec   58    205 KBytes       
+[  5]   1.00-2.00   sec  42.2 MBytes   355 Mbits/sec   31    203 KBytes       
+[  5]   2.00-3.00   sec  39.9 MBytes   335 Mbits/sec   79    197 KBytes       
+[  5]   3.00-4.00   sec  45.4 MBytes   381 Mbits/sec   28    201 KBytes       
+[  5]   4.00-5.00   sec  42.3 MBytes   355 Mbits/sec   58    197 KBytes       
+[  5]   5.00-6.00   sec  40.7 MBytes   341 Mbits/sec   27    201 KBytes       
+[  5]   6.00-7.00   sec  41.9 MBytes   352 Mbits/sec    8    258 KBytes       
+[  5]   7.00-8.00   sec  42.0 MBytes   352 Mbits/sec   27    171 KBytes       
+[  5]   8.00-9.00   sec  42.0 MBytes   353 Mbits/sec   31    188 KBytes       
+[  5]   9.00-10.00  sec  43.1 MBytes   361 Mbits/sec   10    182 KBytes       
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-10.00  sec   423 MBytes   355 Mbits/sec  357             sender
+[  5]   0.00-10.04  sec   422 MBytes   352 Mbits/sec                  receiver
+
+iperf Done.
+```
+```
+# iperf3 -c 192.168.16.152 -u -b 500M
+Connecting to host 192.168.16.152, port 5201
+[  5] local 10.45.0.1 port 55845 connected to 192.168.16.152 port 5201
+[ ID] Interval           Transfer     Bitrate         Total Datagrams
+[  5]   0.00-1.00   sec  59.6 MBytes   500 Mbits/sec  44244  
+[  5]   1.00-2.00   sec  59.6 MBytes   500 Mbits/sec  44236  
+[  5]   2.00-3.00   sec  59.6 MBytes   500 Mbits/sec  44242  
+[  5]   3.00-4.00   sec  59.6 MBytes   500 Mbits/sec  44251  
+[  5]   4.00-5.00   sec  59.7 MBytes   501 Mbits/sec  44326  
+[  5]   5.00-6.00   sec  59.6 MBytes   500 Mbits/sec  44231  
+[  5]   6.00-7.00   sec  59.6 MBytes   500 Mbits/sec  44282  
+[  5]   7.00-8.00   sec  59.6 MBytes   500 Mbits/sec  44254  
+[  5]   8.00-9.00   sec  59.5 MBytes   499 Mbits/sec  44204  
+[  5]   9.00-10.00  sec  59.7 MBytes   501 Mbits/sec  44339  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[  5]   0.00-10.00  sec   596 MBytes   500 Mbits/sec  0.000 ms  0/442609 (0%)  sender
+[  5]   0.00-10.04  sec   543 MBytes   453 Mbits/sec  0.035 ms  39560/442609 (8.9%)  receiver
+
+iperf Done.
+```
+```
+# ping 192.168.16.152 -c 10
+PING 192.168.16.152 (192.168.16.152) 56(84) bytes of data.
+64 bytes from 192.168.16.152: icmp_seq=1 ttl=64 time=0.964 ms
+64 bytes from 192.168.16.152: icmp_seq=2 ttl=64 time=0.852 ms
+64 bytes from 192.168.16.152: icmp_seq=3 ttl=64 time=1.01 ms
+64 bytes from 192.168.16.152: icmp_seq=4 ttl=64 time=0.952 ms
+64 bytes from 192.168.16.152: icmp_seq=5 ttl=64 time=0.852 ms
+64 bytes from 192.168.16.152: icmp_seq=6 ttl=64 time=0.690 ms
+64 bytes from 192.168.16.152: icmp_seq=7 ttl=64 time=1.17 ms
+64 bytes from 192.168.16.152: icmp_seq=8 ttl=64 time=0.904 ms
+64 bytes from 192.168.16.152: icmp_seq=9 ttl=64 time=0.903 ms
+64 bytes from 192.168.16.152: icmp_seq=10 ttl=64 time=0.764 ms
+
+--- 192.168.16.152 ping statistics ---
+10 packets transmitted, 10 received, 0% packet loss, time 9043ms
+rtt min/avg/max/mdev = 0.690/0.906/1.173/0.126 ms
+```
+
+</details>
+
 <details><summary>d. Ping and iPerf3 logs for free5GC UPF v3.3.0</summary>
 
 ```
@@ -1366,6 +1502,11 @@ rtt min/avg/max/mdev = 0.575/0.786/1.032/0.124 ms
 ```
 
 </details>
+
+1. `iperf3 -c 192.168.16.152`  
+2. `iperf3 -c 192.168.16.152 -u -b 500M`<br>**UDP packet loss** is a value measured under deliberate load (500 Mbps) in order to compare performance limits.  
+3. `ping 192.168.16.152 -c 10`
+4. These are the measured values when `xdp_attach_mode` is set to `generic` due to Virtualbox VM. Note that `generic` mode is implemented at the kernel level, so it does not contribute to performance improvement. If it is set to `native`(Driver-level implementation) or `offload`(NIC-level implementation), it may be expected to more improved performance. For reference, a list of drivers that support XDP can be found [here](https://github.com/iovisor/bcc/blob/master/docs/kernel-versions.md#xdp).
 
 These measurement results show that UPG-VPP has relatively outstanding performance even on Virtualbox VM.
 
