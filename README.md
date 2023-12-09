@@ -1299,7 +1299,7 @@ rtt min/avg/max/mdev = 0.642/0.882/1.053/0.099 ms
 | # | UPF | Date | 1) TCP<br>throughput | 2) UDP<br>throughput | 2) UDP<br>packet loss | 3) RTT<br>(msec) | 
 | --- | --- | --- | --- | --- | --- | --- |
 | b | UPG-VPP v1.11.0-rc.2 | 2023.11.30 | S:1.13 Gbps<br>R:1.13 Gbps | S:500 Mbps<br>R:492 Mbps | 1.3% | 0.366 |
-| c | **4) eUPF v0.6.0** | 2023.12.05 | S:355 Mbps<br>R:352 Mbps | S:500 Mbps<br>R:453 Mbps | 8.9% | 0.906 |
+| c | **4) eUPF v0.6.0** | 2023.12.05 | S:358 Mbps<br>R:355 Mbps | S:392 Mbps<br>R:382 Mbps | 2% | 0.850 |
 | d | free5GC UPF v3.3.0 | 2023.11.12 | S:233 Mbps<br>R:229 Mbps | S:499 Mbps<br>R:382 Mbps | 23% | 0.786 |
 
 <details><summary>b. Ping and iPerf3 logs for UPG-VPP v1.11.0-rc.2</summary>
@@ -1374,64 +1374,64 @@ rtt min/avg/max/mdev = 0.272/0.366/0.534/0.085 ms
 ```
 # iperf3 -c 192.168.16.152
 Connecting to host 192.168.16.152, port 5201
-[  5] local 10.45.0.1 port 48326 connected to 192.168.16.152 port 5201
+[  5] local 10.45.0.1 port 44176 connected to 192.168.16.152 port 5201
 [ ID] Interval           Transfer     Bitrate         Retr  Cwnd
-[  5]   0.00-1.00   sec  43.7 MBytes   366 Mbits/sec   58    205 KBytes       
-[  5]   1.00-2.00   sec  42.2 MBytes   355 Mbits/sec   31    203 KBytes       
-[  5]   2.00-3.00   sec  39.9 MBytes   335 Mbits/sec   79    197 KBytes       
-[  5]   3.00-4.00   sec  45.4 MBytes   381 Mbits/sec   28    201 KBytes       
-[  5]   4.00-5.00   sec  42.3 MBytes   355 Mbits/sec   58    197 KBytes       
-[  5]   5.00-6.00   sec  40.7 MBytes   341 Mbits/sec   27    201 KBytes       
-[  5]   6.00-7.00   sec  41.9 MBytes   352 Mbits/sec    8    258 KBytes       
-[  5]   7.00-8.00   sec  42.0 MBytes   352 Mbits/sec   27    171 KBytes       
-[  5]   8.00-9.00   sec  42.0 MBytes   353 Mbits/sec   31    188 KBytes       
-[  5]   9.00-10.00  sec  43.1 MBytes   361 Mbits/sec   10    182 KBytes       
+[  5]   0.00-1.00   sec  37.7 MBytes   316 Mbits/sec  119    200 KBytes       
+[  5]   1.00-2.00   sec  46.6 MBytes   391 Mbits/sec   21    239 KBytes       
+[  5]   2.00-3.00   sec  45.1 MBytes   378 Mbits/sec    4    305 KBytes       
+[  5]   3.00-4.00   sec  38.5 MBytes   323 Mbits/sec   64    186 KBytes       
+[  5]   4.00-5.00   sec  43.2 MBytes   362 Mbits/sec   46    258 KBytes       
+[  5]   5.00-6.00   sec  41.4 MBytes   348 Mbits/sec   28    182 KBytes       
+[  5]   6.00-7.00   sec  43.9 MBytes   368 Mbits/sec    3    256 KBytes       
+[  5]   7.00-8.00   sec  45.0 MBytes   377 Mbits/sec   50    170 KBytes       
+[  5]   8.00-9.00   sec  41.9 MBytes   351 Mbits/sec   43    181 KBytes       
+[  5]   9.00-10.00  sec  43.8 MBytes   367 Mbits/sec   56    167 KBytes       
 - - - - - - - - - - - - - - - - - - - - - - - - -
 [ ID] Interval           Transfer     Bitrate         Retr
-[  5]   0.00-10.00  sec   423 MBytes   355 Mbits/sec  357             sender
-[  5]   0.00-10.04  sec   422 MBytes   352 Mbits/sec                  receiver
+[  5]   0.00-10.00  sec   427 MBytes   358 Mbits/sec  434             sender
+[  5]   0.00-10.05  sec   425 MBytes   355 Mbits/sec                  receiver
 
 iperf Done.
 ```
 ```
 # iperf3 -c 192.168.16.152 -u -b 500M
 Connecting to host 192.168.16.152, port 5201
-[  5] local 10.45.0.1 port 55845 connected to 192.168.16.152 port 5201
+[  5] local 10.45.0.1 port 50301 connected to 192.168.16.152 port 5201
 [ ID] Interval           Transfer     Bitrate         Total Datagrams
-[  5]   0.00-1.00   sec  59.6 MBytes   500 Mbits/sec  44244  
-[  5]   1.00-2.00   sec  59.6 MBytes   500 Mbits/sec  44236  
-[  5]   2.00-3.00   sec  59.6 MBytes   500 Mbits/sec  44242  
-[  5]   3.00-4.00   sec  59.6 MBytes   500 Mbits/sec  44251  
-[  5]   4.00-5.00   sec  59.7 MBytes   501 Mbits/sec  44326  
-[  5]   5.00-6.00   sec  59.6 MBytes   500 Mbits/sec  44231  
-[  5]   6.00-7.00   sec  59.6 MBytes   500 Mbits/sec  44282  
-[  5]   7.00-8.00   sec  59.6 MBytes   500 Mbits/sec  44254  
-[  5]   8.00-9.00   sec  59.5 MBytes   499 Mbits/sec  44204  
-[  5]   9.00-10.00  sec  59.7 MBytes   501 Mbits/sec  44339  
+[  5]   0.00-1.00   sec  45.7 MBytes   383 Mbits/sec  33907  
+[  5]   1.00-2.00   sec  42.3 MBytes   355 Mbits/sec  31389  
+[  5]   2.00-3.00   sec  45.9 MBytes   385 Mbits/sec  34066  
+[  5]   3.00-4.00   sec  47.3 MBytes   397 Mbits/sec  35153  
+[  5]   4.00-5.00   sec  47.4 MBytes   397 Mbits/sec  35178  
+[  5]   5.00-6.00   sec  46.2 MBytes   388 Mbits/sec  34314  
+[  5]   6.00-7.00   sec  52.0 MBytes   436 Mbits/sec  38619  
+[  5]   7.00-8.00   sec  46.0 MBytes   386 Mbits/sec  34189  
+[  5]   8.00-9.00   sec  50.2 MBytes   421 Mbits/sec  37243  
+[  5]   9.00-10.00  sec  44.3 MBytes   371 Mbits/sec  32866  
 - - - - - - - - - - - - - - - - - - - - - - - - -
 [ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
-[  5]   0.00-10.00  sec   596 MBytes   500 Mbits/sec  0.000 ms  0/442609 (0%)  sender
-[  5]   0.00-10.04  sec   543 MBytes   453 Mbits/sec  0.035 ms  39560/442609 (8.9%)  receiver
+[  5]   0.00-10.00  sec   467 MBytes   392 Mbits/sec  0.000 ms  0/346924 (0%)  sender
+[  5]   0.00-10.04  sec   458 MBytes   382 Mbits/sec  0.032 ms  7034/346924 (2%)  receiver
 
 iperf Done.
 ```
 ```
 # ping 192.168.16.152 -c 10
 PING 192.168.16.152 (192.168.16.152) 56(84) bytes of data.
-64 bytes from 192.168.16.152: icmp_seq=1 ttl=64 time=0.964 ms
-64 bytes from 192.168.16.152: icmp_seq=2 ttl=64 time=0.852 ms
-64 bytes from 192.168.16.152: icmp_seq=3 ttl=64 time=1.01 ms
-64 bytes from 192.168.16.152: icmp_seq=4 ttl=64 time=0.952 ms
-64 bytes from 192.168.16.152: icmp_seq=5 ttl=64 time=0.852 ms
-64 bytes from 192.168.16.152: icmp_seq=6 ttl=64 time=0.690 ms
-64 bytes from 192.168.16.152: icmp_seq=7 ttl=64 time=1.17 ms
-64 bytes from 192.168.16.152: icmp_seq=8 ttl=64 time=0.904 ms
-64 bytes from 192.168.16.152: icmp_seq=9 ttl=64 time=0.903 ms
-64 bytes from 192.168.16.152: icmp_seq=10 ttl=64 time=0.764 ms
+64 bytes from 192.168.16.152: icmp_seq=1 ttl=64 time=1.10 ms
+64 bytes from 192.168.16.152: icmp_seq=2 ttl=64 time=0.986 ms
+64 bytes from 192.168.16.152: icmp_seq=3 ttl=64 time=0.797 ms
+64 bytes from 192.168.16.152: icmp_seq=4 ttl=64 time=0.751 ms
+64 bytes from 192.168.16.152: icmp_seq=5 ttl=64 time=0.716 ms
+64 bytes from 192.168.16.152: icmp_seq=6 ttl=64 time=0.797 ms
+64 bytes from 192.168.16.152: icmp_seq=7 ttl=64 time=0.779 ms
+64 bytes from 192.168.16.152: icmp_seq=8 ttl=64 time=0.751 ms
+64 bytes from 192.168.16.152: icmp_seq=9 ttl=64 time=0.971 ms
+64 bytes from 192.168.16.152: icmp_seq=10 ttl=64 time=0.855 ms
 
 --- 192.168.16.152 ping statistics ---
-10 packets transmitted, 10 received, 0% packet loss, time 9043ms
-rtt min/avg/max/mdev = 0.690/0.906/1.173/0.126 ms
+10 packets transmitted, 10 received, 0% packet loss, time 9148ms
+rtt min/avg/max/mdev = 0.716/0.850/1.102/0.120 ms
 ```
 
 </details>
