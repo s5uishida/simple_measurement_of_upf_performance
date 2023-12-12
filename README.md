@@ -74,7 +74,7 @@ The 5GC / RAN&UE used are as follows.
 The UPFs used are as follows.
 
 - Open5GS UPF v2.7.0 (2023.12.04) - https://github.com/open5gs/open5gs
-- UPG-VPP v1.11.0-rc.2 (2023.11.30) - https://github.com/travelping/upg-vpp
+- UPG-VPP v1.11.0 (2023.12.11) - https://github.com/travelping/upg-vpp
 - eUPF v0.6.0 (2023.12.05) - https://github.com/edgecomllc/eupf
 - free5GC UPF v3.3.0 (2023.11.12) - https://github.com/free5gc/free5gc
 
@@ -90,7 +90,7 @@ Each VMs are as follows.
 | # | SW | Date | Commit | OS |
 | --- | --- | --- | --- | --- |
 | a | Open5GS UPF v2.7.0 | 2023.12.04 | `177e561ba86c35d56ecf44d1775a3f4f03139cce` | Ubuntu 22.04 |
-| b | UPG-VPP v1.11.0-rc.2 | 2023.11.30 | `065b2ec85b8bd8f9631d1b854f7b37f11e6a1e1b` | Ubuntu 20.04 |
+| b | UPG-VPP v1.11.0 | 2023.12.11 | `065b2ec85b8bd8f9631d1b854f7b37f11e6a1e1b` | Ubuntu 20.04 |
 | c | eUPF v0.6.0 | 2023.12.05 | `d3e78b8fe10868e534c74cb793ae76923ac4a5e0` | Ubuntu 22.04 |
 | d | free5GC UPF v3.3.0 | 2023.11.12 | `9b9272d9fda970f6af8bb7f1b01d4932c3bfbc8d` |Ubuntu 22.04 |
 
@@ -152,7 +152,7 @@ Please register the subscriber information on each WebConsole of Open5GS and fre
 Please refer to the following for building Open5GS, free5GC, UPFs and PacketRusher respectively.
 - Open5GS v2.7.0 (2023.12.04) - https://open5gs.org/open5gs/docs/guide/02-building-open5gs-from-sources/
 - free5GC v3.3.0 (2023.11.03) - https://free5gc.org/guide/
-- UPG-VPP v1.11.0-rc.2 (2023.11.30) - https://github.com/s5uishida/install_vpp_upf_dpdk#annex_1
+- UPG-VPP v1.11.0 (2023.12.11) - https://github.com/s5uishida/install_vpp_upf_dpdk#annex_1
 - eUPF v0.6.0 (2023.12.05) - https://github.com/s5uishida/install_eupf
 - free5GC UPF v3.3.0 (2023.11.12) - https://free5gc.org/guide/
 - PacketRusher (2023.12.06) - https://github.com/HewlettPackard/PacketRusher/wiki
@@ -731,7 +731,7 @@ Next, configure NAPT and routing to N6 IP address of UPF.
 Please refer to the following for building Open5GS, free5GC, UPFs and PacketRusher respectively.
 - Open5GS v2.7.0 (2023.12.04) - https://open5gs.org/open5gs/docs/guide/02-building-open5gs-from-sources/
 - free5GC v3.3.0 (2023.11.03) - https://free5gc.org/guide/
-- UPG-VPP v1.11.0-rc.2 (2023.11.30) - https://github.com/s5uishida/install_vpp_upf_dpdk#annex_1
+- UPG-VPP v1.11.0 (2023.12.11) - https://github.com/s5uishida/install_vpp_upf_dpdk#annex_1
 - eUPF v0.6.0 (2023.12.05) - https://github.com/s5uishida/install_eupf
 - free5GC UPF v3.3.0 (2023.11.12) - https://free5gc.org/guide/
 - PacketRusher (2023.12.06) - https://github.com/HewlettPackard/PacketRusher/wiki
@@ -973,7 +973,7 @@ Then all the commands in the new shell will use the tunnel.
 
 Try ping and iperf3 client to the address(`192.168.16.152`) of N6 interface on Data Network Gateway.
 
-e.g.) The UPF used in the measurement below is UPG-VPP v1.11.0-rc.2.
+e.g.) The UPF used in the measurement below is UPG-VPP v1.11.0.
 ```
 # ping 192.168.16.152 -c 10
 PING 192.168.16.152 (192.168.16.152) 56(84) bytes of data.
@@ -1026,7 +1026,7 @@ These measurements are the values measured between the IP address `10.45.0.0/16`
 | --- | --- | --- | --- | --- | --- | --- |
 | a-1 | Open5GS UPF v2.7.0 (TUN) | 2023.12.04 | S:205 Mbps<br>R:204 Mbps | S:458 Mbps<br>R:319 Mbps | 30% | 1.081 |
 | a-2 | Open5GS UPF v2.7.0 (TAP) | 2023.12.04 | S:275 Mbps<br>R:273 Mbps | S:465 Mbps<br>R:314 Mbps | 32% | 1.198 |
-| b | UPG-VPP v1.11.0-rc.2 | 2023.11.30 | S:1.14 Gbps<br>R:1.13 Gbps | S:461 Mbps<br>R:455 Mbps | 0.96% | 0.398 |
+| b | UPG-VPP v1.11.0 | 2023.12.11 | S:1.14 Gbps<br>R:1.13 Gbps | S:461 Mbps<br>R:455 Mbps | 0.96% | 0.398 |
 | c | **4) eUPF v0.6.0** | 2023.12.05 | S:359 Mbps<br>R:356 Mbps | S:426 Mbps<br>R:409 Mbps | 3.6% | 0.882 |
 
 <details><summary>a-1. Ping and iPerf3 logs for Open5GS UPF v2.7.0 (TUN)</summary>
@@ -1163,7 +1163,7 @@ rtt min/avg/max/mdev = 0.860/1.198/1.867/0.313 ms
 
 </details>
 
-<details><summary>b. Ping and iPerf3 logs for UPG-VPP v1.11.0-rc.2</summary>
+<details><summary>b. Ping and iPerf3 logs for UPG-VPP v1.11.0</summary>
 
 ```
 # iperf3 -c 192.168.16.152
@@ -1300,11 +1300,11 @@ rtt min/avg/max/mdev = 0.642/0.882/1.053/0.099 ms
 **Connected to free5GC C-Plane**
 | # | UPF | Date | 1) TCP<br>throughput | 2) UDP<br>throughput | 2) UDP<br>packet loss | 3) RTT<br>(msec) | 
 | --- | --- | --- | --- | --- | --- | --- |
-| b | UPG-VPP v1.11.0-rc.2 | 2023.11.30 | S:1.13 Gbps<br>R:1.13 Gbps | S:500 Mbps<br>R:492 Mbps | 1.3% | 0.366 |
+| b | UPG-VPP v1.11.0 | 2023.12.11 | S:1.13 Gbps<br>R:1.13 Gbps | S:500 Mbps<br>R:492 Mbps | 1.3% | 0.366 |
 | c | **4) eUPF v0.6.0** | 2023.12.05 | S:358 Mbps<br>R:355 Mbps | S:392 Mbps<br>R:382 Mbps | 2% | 0.850 |
 | d | free5GC UPF v3.3.0 | 2023.11.12 | S:233 Mbps<br>R:229 Mbps | S:499 Mbps<br>R:382 Mbps | 23% | 0.786 |
 
-<details><summary>b. Ping and iPerf3 logs for UPG-VPP v1.11.0-rc.2</summary>
+<details><summary>b. Ping and iPerf3 logs for UPG-VPP v1.11.0</summary>
 
 ```
 # iperf3 -c 192.168.16.152
@@ -1523,4 +1523,5 @@ I would like to thank all the excellent developers and contributors who created 
 
 ## Changelog (summary)
 
+- [2023.12.12] There is no change from `UPG-VPP v1.11.0-rc.2`, and it has been tagged as `v1.11.0`.
 - [2023.12.07] Initial release.
