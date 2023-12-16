@@ -99,13 +99,13 @@ The network interfaces of each VM except VM-UP are as follows.
 | --- | --- | --- | --- | --- | --- |
 | VM1 | enp0s3 | NAT(default) | 82540EM | 10.0.2.15/24 | (VM default NW) |
 | | enp0s8 | Bridged Adapter | 82540EM | 192.168.0.111/24 | (Mgmt NW) |
-| | enp0s9 | NAT Network | vertio-net | 192.168.14.111/24 | N4 |
+| | enp0s9 | NAT Network | virtio-net | 192.168.14.111/24 | N4 |
 | VM-DN | enp0s3 | NAT(default) | 82540EM | 10.0.2.15/24 | (VM default NW) |
 | | enp0s8 | Bridged Adapter | 82540EM | 192.168.0.152/24 | (Mgmt NW) |
-| | enp0s9 | NAT Network | vertio-net | 192.168.16.152/24 | N6<br>***default GW for VM-UP*** |
+| | enp0s9 | NAT Network | virtio-net | 192.168.16.152/24 | N6<br>***default GW for VM-UP*** |
 | VM2 | enp0s3 | NAT(default) | 82540EM | 10.0.2.15/24 | (VM default NW) |
 | | enp0s8 | Bridged Adapter | 82540EM | 192.168.0.131/24 | (Mgmt NW) |
-| | enp0s9 | NAT Network | vertio-net | 192.168.13.131/24 | N3 |
+| | enp0s9 | NAT Network | virtio-net | 192.168.13.131/24 | N3 |
 
 **The network interfaces of each VM-UP(UPFs) are as follows.**
 **Note that UPFs from `a` to `c` connect to Open5GS CN, but `d` free5GC UPF does not support FTUP flag in PFCP Association Setup Request/Respose, so it connects to free5GC CN.**
@@ -113,9 +113,9 @@ The network interfaces of each VM except VM-UP are as follows.
 | --- | --- | --- | --- | --- | --- | --- |
 | a | Open5GS UPF | ~~enp0s3~~ | ~~NAT(default)~~ | ~~82540EM~~ | ~~10.0.2.15/24~~ | ~~(VM default NW)~~<br>***down*** |
 | | | enp0s8 | Bridged Adapter | 82540EM | 192.168.0.151/24 | (Mgmt NW) |
-| | | enp0s9 | NAT Network | vertio-net | 192.168.13.151/24 | N3 |
-| | | enp0s10 | NAT Network | vertio-net | 192.168.14.151/24 | N4 |
-| | | enp0s16 | NAT Network | vertio-net | 192.168.16.151/24 | N6 |
+| | | enp0s9 | NAT Network | virtio-net | 192.168.13.151/24 | N3 |
+| | | enp0s10 | NAT Network | virtio-net | 192.168.14.151/24 | N4 |
+| | | enp0s16 | NAT Network | virtio-net | 192.168.16.151/24 | N6 |
 | b | UPG-VPP | enp0s3 | NAT(default) | 82540EM | 10.0.2.15/24 | (VM default NW) |
 | | | enp0s8 | Bridged Adapter | 82540EM | 192.168.0.151/24 | (Mgmt NW) |
 | | | enp0s9 | NAT Network | 82540EM | 192.168.13.151/24 | N3<br>***(Under DPDK<br>by vfio-pci)*** |
@@ -123,14 +123,14 @@ The network interfaces of each VM except VM-UP are as follows.
 | | | enp0s16 | NAT Network | 82540EM | 192.168.16.151/24 | N6<br>***(Under DPDK<br>by vfio-pci)*** |
 | c | eUPF | ~~enp0s3~~ | ~~NAT(default)~~ | ~~82540EM~~ | ~~10.0.2.15/24~~ | ~~(VM default NW)~~<br>***down*** |
 | | | enp0s8 | Bridged Adapter | 82540EM | 192.168.0.151/24 | (Mgmt NW) |
-| | | enp0s9 | NAT Network | vertio-net | 192.168.13.151/24 | N3 ***(XDP)*** |
-| | | enp0s10 | NAT Network | vertio-net | 192.168.14.151/24 | N4 |
-| | | enp0s16 | NAT Network | vertio-net | 192.168.16.151/24 | N6 ***(XDP)*** |
+| | | enp0s9 | NAT Network | virtio-net | 192.168.13.151/24 | N3 ***(XDP)*** |
+| | | enp0s10 | NAT Network | virtio-net | 192.168.14.151/24 | N4 |
+| | | enp0s16 | NAT Network | virtio-net | 192.168.16.151/24 | N6 ***(XDP)*** |
 | d | free5GC UPF | ~~enp0s3~~ | ~~NAT(default)~~ | ~~82540EM~~ | ~~10.0.2.15/24~~ | ~~(VM default NW)~~<br>***down*** |
 | | | enp0s8 | Bridged Adapter | 82540EM | 192.168.0.151/24 | (Mgmt NW) |
-| | | enp0s9 | NAT Network | vertio-net | 192.168.13.151/24 | N3 |
-| | | enp0s10 | NAT Network | vertio-net | 192.168.14.151/24 | N4 |
-| | | enp0s16 | NAT Network | vertio-net | 192.168.16.151/24 | N6 |
+| | | enp0s9 | NAT Network | virtio-net | 192.168.13.151/24 | N3 |
+| | | enp0s10 | NAT Network | virtio-net | 192.168.14.151/24 | N4 |
+| | | enp0s16 | NAT Network | virtio-net | 192.168.16.151/24 | N6 |
 
 NAT networks of Virtualbox  are as follows.
 | Network Name | Network CIDR |
