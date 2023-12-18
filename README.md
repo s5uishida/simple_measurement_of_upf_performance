@@ -1524,6 +1524,6 @@ I would like to thank all the excellent developers and contributors who created 
 
 ## Changelog (summary)
 
-- [2023.12.19] Added the [link](https://developer.hpe.com/blog/open-sourcing-packetrusher-a-5g-core-performance-tester/) to HPE developer blog regarding PacketRusher.
+- [2023.12.19] Added the [link](https://developer.hpe.com/blog/open-sourcing-packetrusher-a-5g-core-performance-tester/) to HPE Developer Blog regarding PacketRusher.
 - [2023.12.12] There is no change from `UPG-VPP v1.11.0-rc.2`, and it has been tagged as `v1.11.0`.
 - [2023.12.07] Initial release.
