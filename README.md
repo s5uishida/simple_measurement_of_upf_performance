@@ -1,5 +1,6 @@
 # Simple Measurement of UPF Performance
 This describes simple performance measurements of several open source UPFs by using [PacketRusher](https://github.com/HewlettPackard/PacketRusher) as the performance measurement tool.
+PacketRusher is also featured on [HPE Developer Blog](https://developer.hpe.com/blog/open-sourcing-packetrusher-a-5g-core-performance-tester/).
 
 ---
 
@@ -1523,5 +1524,6 @@ I would like to thank all the excellent developers and contributors who created 
 
 ## Changelog (summary)
 
+- [2023.12.19] Added the [link](https://developer.hpe.com/blog/open-sourcing-packetrusher-a-5g-core-performance-tester/) to HPE developer blog regarding PacketRusher.
 - [2023.12.12] There is no change from `UPG-VPP v1.11.0-rc.2`, and it has been tagged as `v1.11.0`.
 - [2023.12.07] Initial release.
