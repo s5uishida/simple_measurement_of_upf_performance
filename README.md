@@ -757,7 +757,7 @@ Each UPF uses the same IP address, so start only the UPF you want to measure.
 
 Please use the configuration files changed for TUN interface.
 ```
-# cd free5GC
+# cd open5gs
 # ./install/bin/open5gs-upfd
 ```
 
