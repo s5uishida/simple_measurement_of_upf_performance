@@ -77,7 +77,7 @@ The UPFs used are as follows.
 - Open5GS UPF v2.7.0 (2023.12.04) - https://github.com/open5gs/open5gs
 - UPG-VPP v1.11.0 (2023.12.11) - https://github.com/travelping/upg-vpp
 - eUPF v0.6.0 (2023.12.05) - https://github.com/edgecomllc/eupf
-- free5GC UPF v3.3.0 (2023.11.12) - https://github.com/free5gc/free5gc
+- free5GC UPF v1.2.0 (2023.11.12) - https://github.com/free5gc/go-upf
 
 Each VMs are as follows.
 | VM | SW & Role | IP address | OS | CPU | Memory | HDD |
@@ -93,7 +93,7 @@ Each VMs are as follows.
 | a | Open5GS UPF v2.7.0 | 2023.12.04 | `177e561ba86c35d56ecf44d1775a3f4f03139cce` | Ubuntu 22.04 |
 | b | UPG-VPP v1.11.0 | 2023.12.11 | `065b2ec85b8bd8f9631d1b854f7b37f11e6a1e1b` | Ubuntu 20.04 |
 | c | eUPF v0.6.0 | 2023.12.05 | `d3e78b8fe10868e534c74cb793ae76923ac4a5e0` | Ubuntu 22.04 |
-| d | free5GC UPF v3.3.0 | 2023.11.12 | `9b9272d9fda970f6af8bb7f1b01d4932c3bfbc8d` |Ubuntu 22.04 |
+| d | free5GC UPF v1.2.0 | 2023.11.12 | `9b9272d9fda970f6af8bb7f1b01d4932c3bfbc8d` |Ubuntu 22.04 |
 
 The network interfaces of each VM except VM-UP are as follows.
 | VM | Device | Network Adapter | Adapter Type | IP address | Interface |
@@ -155,7 +155,7 @@ Please refer to the following for building Open5GS, free5GC, UPFs and PacketRush
 - free5GC v3.3.0 (2023.11.03) - https://free5gc.org/guide/
 - UPG-VPP v1.11.0 (2023.12.11) - https://github.com/s5uishida/install_vpp_upf_dpdk#annex_1
 - eUPF v0.6.0 (2023.12.05) - https://github.com/s5uishida/install_eupf
-- free5GC UPF v3.3.0 (2023.11.12) - https://free5gc.org/guide/
+- free5GC UPF v1.2.0 (2023.11.12) - https://free5gc.org/guide/
 - PacketRusher (2023.12.06) - https://github.com/HewlettPackard/PacketRusher/wiki
 
 <a id="changes_cp_open5gs"></a>
@@ -734,7 +734,7 @@ Please refer to the following for building Open5GS, free5GC, UPFs and PacketRush
 - free5GC v3.3.0 (2023.11.03) - https://free5gc.org/guide/
 - UPG-VPP v1.11.0 (2023.12.11) - https://github.com/s5uishida/install_vpp_upf_dpdk#annex_1
 - eUPF v0.6.0 (2023.12.05) - https://github.com/s5uishida/install_eupf
-- free5GC UPF v3.3.0 (2023.11.12) - https://free5gc.org/guide/
+- free5GC UPF v1.2.0 (2023.11.12) - https://free5gc.org/guide/
 - PacketRusher (2023.12.06) - https://github.com/HewlettPackard/PacketRusher/wiki
 
 Install MongoDB on Open5GS and free5GC C-Plane machines.
@@ -1303,7 +1303,7 @@ rtt min/avg/max/mdev = 0.642/0.882/1.053/0.099 ms
 | --- | --- | --- | --- | --- | --- | --- |
 | b | UPG-VPP v1.11.0 | 2023.12.11 | S:1.13 Gbps<br>R:1.13 Gbps | S:500 Mbps<br>R:492 Mbps | 1.3% | 0.366 |
 | c | **4) eUPF v0.6.0** | 2023.12.05 | S:358 Mbps<br>R:355 Mbps | S:392 Mbps<br>R:382 Mbps | 2% | 0.850 |
-| d | free5GC UPF v3.3.0 | 2023.11.12 | S:233 Mbps<br>R:229 Mbps | S:499 Mbps<br>R:382 Mbps | 23% | 0.786 |
+| d | free5GC UPF v1.2.0 | 2023.11.12 | S:233 Mbps<br>R:229 Mbps | S:499 Mbps<br>R:382 Mbps | 23% | 0.786 |
 
 <details><summary>b. Ping and iPerf3 logs for UPG-VPP v1.11.0</summary>
 
