@@ -1,6 +1,7 @@
 # Simple Measurement of UPF Performance
 This describes simple performance measurements of several open source UPFs by using [PacketRusher](https://github.com/HewlettPackard/PacketRusher) as the performance measurement tool.
 PacketRusher is also featured on [HPE Developer Blog](https://developer.hpe.com/blog/open-sourcing-packetrusher-a-5g-core-performance-tester/).
+For the latest measurement results, please see [Miscellaneous](https://github.com/s5uishida/sample_config_misc_for_mobile_network#misc).
 
 ---
 
