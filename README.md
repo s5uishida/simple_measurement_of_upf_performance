@@ -3,7 +3,7 @@ This describes simple performance measurements of several open source UPFs by us
 PacketRusher is also featured on [HPE Developer Blog](https://developer.hpe.com/blog/open-sourcing-packetrusher-a-5g-core-performance-tester/).
 For the latest measurement results, please see [Miscellaneous](https://github.com/s5uishida/sample_config_misc_for_mobile_network#misc).
 
-**Note. This is a very simple measurement, and according to [the comment](https://github.com/open5gs/open5gs/discussions/1780#discussioncomment-10853290), it doesn't seem to make much sense to measure between Virtualbox VMs. I hope it will serve as a reference for a simple configuration when measuring on real devices.**
+**Note. This is a very simple measurement, and according to [this comment](https://github.com/open5gs/open5gs/discussions/1780#discussioncomment-10853290), it doesn't seem to make much sense to measure between Virtualbox VMs. I hope it will serve as a reference for a simple configuration when measuring on real devices.**
 
 ---
 
